@@ -1,0 +1,24 @@
+# Import the Gtts module for text to speech conversion 
+#lLoad gtts using the following command.
+from gtts import gTTS 
+  
+# import Os module to start the audio file
+import os 
+
+#open txt file using "open" in which the first parameter is file name and second is read mode.
+# save any text file in the same directory where the code is saved and load it by giving its name.
+fh = open("test.txt", "r")
+
+#code cant read end of line so we need to replace all end of lines in the text  file with "space"
+myText = fh.read().replace("\n", " ")
+
+# Language we want to use 
+language = 'en'
+
+output = gTTS(text=myText, lang=language, slow=False)
+
+output.save("output.mp3")
+fh.close()
+
+# Play the converted file 
+os.system("start output.mp3")
